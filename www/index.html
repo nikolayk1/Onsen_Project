@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Construction</title>
+  <link rel="stylesheet" href="onsenui/css/onsenui.css">
+  <link rel="stylesheet" href="onsenui/css/onsen-css-components.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <script src="onsenui/js/onsenui.min.js"></script>
+</head>
+
+<body>
+  <ons-page>
+    <ons-toolbar style="background-color: rgb(148, 133, 117);">
+      <div class="center toolbar__center text-center col-lg-12 col-sm-6" style="color:rgb(244, 194, 68); font-size: medium;">Welcome to our Construction App</div>
+    </ons-toolbar>
+    <ons-tabbar swipeable position="auto">
+      <ons-tab class style="background-color: rgb(148, 133, 117);" page="tab1.html" label="Home"
+        icon="ion-ios-home, material:md-home" active> </ons-tab>
+      <ons-tab style="background-color: rgb(148, 133, 117);" page="tab2.html" label="Workshop" icon="ion-ios-hammer"
+        active-icon="ion-ios-hammer"> </ons-tab>
+      <ons-tab style="background-color: rgb(148, 133, 117);" page="tab3.html" label="Device Settings"
+        icon="ion-ios-settings" active-icon="ion-ios-settings"> </ons-tab>
+    </ons-tabbar>
+  </ons-page>
+  <template id="tab1.html">
+    <ons-page>
+      <div class="background">
+        <h2 class="h2">Introduction</h2>
+      </div>
+      <div class="container mt-5 p-5">
+        <div class="row mt-5">
+          <div class="col-lg-6 mb-3">
+            <div class="card text-center border-dark" style="padding: 20px; margin: auto; max-width: 400px;">
+              <div class="card-header bg-warning bg-opacity-50">
+                <h3 class="display-6">Core Values</h3>
+              </div>
+              <div class="card-body">
+                <img src="/www/img/builder.jpg" alt="Value" width="30%" class="">
+                <h4>What are our Perspectives?</h4><br>
+                <hr>
+                <h5>We strongly believe in Ethics and Culture. That is why we aim to provide Quality Service in the area
+                  of Building Construction and overall Development</Q></h5>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 mb-3">
+            <div class="card text-center border-dark" style="padding: 20px; margin:auto; max-width: 400px;">
+              <div class="card-header bg-danger bg-opacity-50">
+                <h3 class="display-6">Mission Statement</h3>
+              </div>
+              <div class="card-body">
+                <img src="/www/img/building.jpg" alt="Mission" width="40%" class="">
+                <h5 class="h4 mt-5">What is our main Goal?</h5><br>
+                <hr class="style1">
+                <h5>Our main goal is to offer a Mobile Application where workers can submit pictures of the work they
+                    have performed.</h5>
+              </div>
+            </div>
+          </div>
+    </ons-page>
+  </template>
+
+  <template id="tab2.html">
+    <ons-page>
+      <ons-toolbar style="justify-content: center; background-color: rgb(245, 216, 176); width: 100%;">
+        <div class="toolbar__center toolbar--material__center d-flex justify-content-center">
+          Image Capture
+        </div>
+      </ons-toolbar>
+      <div style="background-image:url(/www/img/dark.jpg); text-align:center; height: 100%; background-repeat: no-repeat; background-size: cover;
+      object-fit: cover;">
+        <div style="width: 100%;padding-top: 20%;height:80%;">
+          <div class="card"
+            style="background-color: rgb(245, 230, 176);width: 100%;margin: auto;border: 1px solid blanchedalmond;padding: 10px;">
+            <div id=pic style="text-align: center;">
+              <button class="btn btn-large bg-warning" onclick="snapPicture()">Take Photo</button>
+              <br><br><br><br>
+              <div id="img"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ons-page>
+  </template>
+
+  <template id="tab3.html">
+    <ons-page id="Tab3">
+      <div class="background3">
+        <h2 class="h2">Here you can find some Information about this Device</h2>
+        <div class="container mt-5 p-3">
+          <div class="row mt-5">
+            <div class="col-lg-12">
+              <div class="card text-center border-dark" style="padding: 30px;">
+                <div class="card-header bg-primary bg-opacity-50">
+                  <h3 class="display-6">Main characteristics</h3>
+                </div>
+                <hr>
+                <div class="card-body">
+                  Device Operation System:
+                  <p style="text-align: center;" id="devInfo">
+
+                  </p>
+                  <div class="battery-container; " style="text-align: center; margin-top: 50px;">
+                    <p>Battery Level: <span id="batteryLevel">Unknown</span></p>
+                    <p>Battery Status: <span id="batteryStatus">Unknown</span></p>
+                  </div>
+                  <div style="text-align: center;">
+                    <ons-range id="batterySlider" value="50" max="100" style="width: 50%; height: 40px; padding: 20px;">
+                    </ons-range>
+                  </div>
+                  <div class="mt-3 d-flex justify-content-center">
+                    <ons-list>
+                      <ons-list-item id="connection-type">Connection Type: </ons-list-item>
+                      <ons-list-item id="internet-status">Internet Status: </ons-list-item>
+                      <ons-button onclick="vibrate()" class="d-flex justify-content-center mt-3">Click here to Vibrate</ons-button>
+                    </ons-list>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ons-page>
+  </template>
+  </div>
+  <script src="cordova.js"></script>
+  <script src="js/index.js"></script>
+</body>
+
+</html>
